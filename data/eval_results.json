@@ -1,0 +1,396 @@
+[
+  {
+    "CLM_ID": "CLM001",
+    "truth": "FLAG",
+    "predicted": "FLAG",
+    "correct": true,
+    "verdict": {
+      "decision": "FLAG",
+      "triggered_rules": [
+        "Upcoding detected: 99215 billed for low-acuity diagnosis J02.9 (Acute Pharyngitis); appropriate code is 99213"
+      ],
+      "rationale": "The provider billed a high-complexity E/M visit code (99215) for a routine diagnosis of acute pharyngitis, which is a low-acuity condition that does not clinically support that level of service. The appropriate code for this diagnosis is 99213 (low-to-moderate complexity E/M). Although the billed dollar amount falls within normal statistical range, the coding mismatch presents a clear upcoding risk that requires medical record review before payment can be approved.",
+      "confidence": "HIGH"
+    }
+  },
+  {
+    "CLM_ID": "CLM002",
+    "truth": "FLAG",
+    "predicted": "FLAG",
+    "correct": true,
+    "verdict": {
+      "decision": "FLAG",
+      "triggered_rules": [
+        "Upcoding: CPT 99215 billed for low-acuity diagnosis J20.9 (Acute Bronchitis), which does not meet the clinical threshold for high-complexity medical decision-making",
+        "Appropriate code should be 99213, indicating potential overpayment at the 99215 reimbursement rate"
+      ],
+      "rationale": "Claim CLM002 was billed using CPT 99215, a high-complexity evaluation and management code, paired with a diagnosis of acute bronchitis (J20.9), which is a routine, low-acuity condition that does not clinically justify high-complexity medical decision-making. While the $180.00 payment amount falls within the statistically normal range for a 99215 code, the underlying code itself appears to be upcoded relative to the documented diagnosis. This claim is recommended for clinical documentation review and potential recoupment action, as the correct code (99213) would likely result in a lower reimbursement.",
+      "confidence": "HIGH"
+    }
+  },
+  {
+    "CLM_ID": "CLM003",
+    "truth": "FLAG",
+    "predicted": "FLAG",
+    "correct": true,
+    "verdict": {
+      "decision": "FLAG",
+      "triggered_rules": [
+        "Upcoding detected: CPT 99215 billed with low-acuity diagnosis M54.5 (Low Back Pain); appropriate code is 99213"
+      ],
+      "rationale": "The provider billed CPT 99215, a high-complexity evaluation and management visit, for a diagnosis of low back pain (M54.5), which is a low-acuity condition that does not clinically support high medical decision-making complexity. The appropriate billing code for this diagnosis is 99213, a mid-level E/M visit. This claim requires a clinical documentation review and may result in recoupment or adjustment if supporting documentation is insufficient.",
+      "confidence": "HIGH"
+    }
+  },
+  {
+    "CLM_ID": "CLM004",
+    "truth": "FLAG",
+    "predicted": "FLAG",
+    "correct": true,
+    "verdict": {
+      "decision": "FLAG",
+      "triggered_rules": [
+        "NCCI PTP Unbundling: CPT 58260 + CPT 58720 billed separately instead of comprehensive code CPT 58262",
+        "Payment Amount Outlier: Billed amount $1,100.00 is 3.75 standard deviations above reference mean of $650.00 (threshold: >3.0)"
+      ],
+      "rationale": "This claim exhibits two distinct red flags: an NCCI Procedure-to-Procedure unbundling violation where component codes 58260 and 58720 were billed separately instead of the single comprehensive code 58262, and a statistically significant payment outlier with a z-score of 3.75 exceeding the 3.0 threshold. The co-occurrence of unbundling and a high-dollar outlier on the same claim materially elevates the risk of fraud or abuse, warranting immediate recode, documentation review, and potential audit escalation.",
+      "confidence": "HIGH"
+    }
+  },
+  {
+    "CLM_ID": "CLM005",
+    "truth": "FLAG",
+    "predicted": "FLAG",
+    "correct": true,
+    "verdict": {
+      "decision": "FLAG",
+      "triggered_rules": [
+        "PTP Unbundling: CPT 80048 (Basic Metabolic Panel) is a component of CPT 80053 (Comprehensive Metabolic Panel) with Modifier Indicator 0 \u2014 edit is absolute and cannot be overridden",
+        "Payment Outlier: Billed amount of $40.00 yields a Z-score of 3.0, placing it at the borderline outlier threshold against a reference mean of $22.00"
+      ],
+      "rationale": "Claim CLM005 contains a confirmed unbundling violation where CPT 80048 is billed alongside CPT 80053, despite 80048 being fully subsumed within 80053 and non-overridable by any modifier. Additionally, the billed amount of $40.00 sits exactly at the statistical outlier boundary (Z-score 3.0), and when combined with the unbundling violation, raises a credible concern of overbilling. The claim must be corrected by removing CPT 80048 and the payment amount reviewed before any reimbursement is issued.",
+      "confidence": "HIGH"
+    }
+  },
+  {
+    "CLM_ID": "CLM006",
+    "truth": "FLAG",
+    "predicted": "FLAG",
+    "correct": true,
+    "verdict": {
+      "decision": "FLAG",
+      "triggered_rules": [
+        "PTP Unbundling Edit: 93005 billed as component of comprehensive code 93000 without confirmed valid modifier",
+        "Elevated Payment Amount: $55.00 is 57% above reference mean of $35.00 with a Z-score of 2.0"
+      ],
+      "rationale": "Claim CLM006 contains a Procedure-to-Procedure unbundling violation where 93005 (ECG Tracing Only) is billed alongside 93000 (Complete ECG), which already includes the tracing component. Unless a valid modifier such as 59 or XU is documented with clinical justification for a distinct separate service, 93005 should be removed or the claim denied. Additionally, the payment amount of $55.00 is elevated above the reference mean and warrants monitoring for trend analysis.",
+      "confidence": "HIGH"
+    }
+  },
+  {
+    "CLM_ID": "CLM007",
+    "truth": "FLAG",
+    "predicted": "FLAG",
+    "correct": true,
+    "verdict": {
+      "decision": "FLAG",
+      "triggered_rules": [
+        "Sex-procedure mismatch: CPT 59400 (Routine Obstetric Care) billed for a male patient (Sex Code: 1)"
+      ],
+      "rationale": "CPT code 59400 covers routine obstetric care, which is clinically impossible for a male patient. This represents a critical sex-procedure mismatch that may indicate a data entry error such as an incorrect beneficiary ID or sex code, or a potentially fraudulent or erroneous claim submission. The claim must be denied or suspended pending manual investigation before any payment is issued.",
+      "confidence": "HIGH"
+    }
+  },
+  {
+    "CLM_ID": "CLM008",
+    "truth": "FLAG",
+    "predicted": "FLAG",
+    "correct": true,
+    "verdict": {
+      "decision": "FLAG",
+      "triggered_rules": [
+        "Sex/procedure mismatch: HCPCS code 58262 (Vaginal Hysterectomy) billed for a male beneficiary (BENE_SEX_IDENT_CD = 1)"
+      ],
+      "rationale": "Claim CLM008 has been flagged because procedure code 58262, a vaginal hysterectomy, is restricted to female patients only, but the beneficiary on record is coded as male. This is a critical mutually exclusive coding violation that may indicate a wrong patient assignment, an incorrect procedure code entry, or a data entry error on the sex identifier field. The billed amount of $820.00 is within normal range and raises no financial concern, but the sex-procedure mismatch alone warrants immediate manual review.",
+      "confidence": "HIGH"
+    }
+  },
+  {
+    "CLM_ID": "CLM009",
+    "truth": "FLAG",
+    "predicted": "FLAG",
+    "correct": true,
+    "verdict": {
+      "decision": "FLAG",
+      "triggered_rules": [
+        "MUE Violation: CPT 99213 billed 4 units on a single date of service (2024-04-14), exceeding the maximum allowed 1 unit per day per beneficiary",
+        "Payment Amount Outlier: Billed amount of $340.00 is 4x the reference mean of $85.00, producing a Z-score of 12.75, far exceeding the 3.0 threshold"
+      ],
+      "rationale": "This claim fails both coding rule and payment outlier checks. CPT 99213 was billed with 4 units on the same date of service, directly violating the Medically Unlikely Edit cap of 1 unit per day, and the resulting billed amount of $340.00 is mathematically consistent with that 4x overbilling. The combination of an extreme Z-score and a clear MUE violation strongly suggests improper billing that warrants denial, reduction to 1 unit at the standard rate, and further audit.",
+      "confidence": "HIGH"
+    }
+  },
+  {
+    "CLM_ID": "CLM010",
+    "truth": "FLAG",
+    "predicted": "FLAG",
+    "correct": true,
+    "verdict": {
+      "decision": "FLAG",
+      "triggered_rules": [
+        "MUE Violation: 5 units billed for HCPCS 80053 exceeding maximum allowed 1 unit per encounter",
+        "Payment Amount Outlier: Billed amount of $110.00 produces Z-score of 14.67, far exceeding the 3.0 threshold against a reference mean of $22.00"
+      ],
+      "rationale": "Claim CLM010 was submitted with 5 units of HCPCS code 80053 (Comprehensive Metabolic Panel), directly violating the MUE cap of 1 unit per encounter. This excess unit count inflated the billed amount to $110.00, which is 5 times the reference mean of $22.00 and corresponds to an extreme Z-score of 14.67. The two violations are causally linked and together indicate a high-confidence billing irregularity requiring denial or adjustment to 1 unit and further provider audit.",
+      "confidence": "HIGH"
+    }
+  },
+  {
+    "CLM_ID": "CLM011",
+    "truth": "FLAG",
+    "predicted": "FLAG",
+    "correct": true,
+    "verdict": {
+      "decision": "FLAG",
+      "triggered_rules": [
+        "Payment amount outlier: Z-score of 18.25 exceeds threshold of 3.0",
+        "Billed amount of $450.00 is approximately 5.3x the reference mean of $85.00 for CPT 99213"
+      ],
+      "rationale": "The billed amount of $450.00 for a standard office visit (CPT 99213) is an extreme statistical outlier, sitting 18.25 standard deviations above the expected mean of $85.00. While the procedure and diagnosis codes are valid and compliant with no coding violations detected, the payment amount requires immediate manual review and verification against the applicable fee schedule. This anomaly may indicate a data entry error, fee schedule non-compliance, or potential billing fraud.",
+      "confidence": "HIGH"
+    }
+  },
+  {
+    "CLM_ID": "CLM012",
+    "truth": "FLAG",
+    "predicted": "FLAG",
+    "correct": true,
+    "verdict": {
+      "decision": "FLAG",
+      "triggered_rules": [
+        "MUE Violation: HCPCS 36415 billed with 8 units exceeding the MUE cap of 3 units per encounter",
+        "Payment Amount Outlier: Billed amount of $120.00 is 37.33 standard deviations above the reference mean of $8.00"
+      ],
+      "rationale": "This claim was flagged for two independent high-risk violations. The provider billed 8 units for routine venipuncture when the medically unlikely edit cap allows a maximum of 3 units per encounter, representing a 167% excess. Additionally, the billed amount of $120.00 is an extreme statistical outlier with a z-score of 37.33, far exceeding the threshold of 3.0, which together strongly indicates fraudulent or erroneous billing requiring immediate SIU referral and medical records review.",
+      "confidence": "HIGH"
+    }
+  },
+  {
+    "CLM_ID": "CLM013",
+    "truth": "PASS",
+    "predicted": "PASS",
+    "correct": true,
+    "verdict": {
+      "decision": "PASS",
+      "triggered_rules": [],
+      "rationale": "Claim CLM013 passed all coding compliance checks with no PTP unbundling, MUE violations, mutually exclusive code conflicts, or upcoding flags detected. The billed amount of $82.00 is well within normal range, producing a Z-score of -0.15 against a reference mean of $85.00, far below the outlier threshold of 3.0. No further review or corrective action is warranted for this claim.",
+      "confidence": "HIGH"
+    }
+  },
+  {
+    "CLM_ID": "CLM014",
+    "truth": "PASS",
+    "predicted": "PASS",
+    "correct": true,
+    "verdict": {
+      "decision": "PASS",
+      "triggered_rules": [],
+      "rationale": "Claim CLM014 passed all automated audit checks with no coding violations, unbundling issues, or payment anomalies detected. The procedure code 99213 is appropriately paired with diagnosis J02.9 per NCCI guidelines, and the billed amount of $90.00 falls well within normal range with a Z-score of 0.25 against a threshold of 3.0. No further review is warranted.",
+      "confidence": "HIGH"
+    }
+  },
+  {
+    "CLM_ID": "CLM015",
+    "truth": "PASS",
+    "predicted": "PASS",
+    "correct": true,
+    "verdict": {
+      "decision": "PASS",
+      "triggered_rules": [],
+      "rationale": "Claim CLM015 passed all coding integrity checks with no PTP unbundling, MUE violations, mutually exclusive code conflicts, or upcoding flags detected. The billed amount of $130.00 is within normal range, producing a Z-score of only 0.2 against a reference mean of $125.00, well below the outlier threshold of 3.0. No fraud, waste, or abuse indicators were identified, and the claim may proceed through the payment pipeline without further review.",
+      "confidence": "HIGH"
+    }
+  },
+  {
+    "CLM_ID": "CLM016",
+    "truth": "PASS",
+    "predicted": "PASS",
+    "correct": true,
+    "verdict": {
+      "decision": "PASS",
+      "triggered_rules": [],
+      "rationale": "Claim CLM016 passed all coding rule checks with no PTP unbundling, MUE violations, or upcoding issues detected. The billed amount of $118.00 is slightly below the reference mean of $125.00, yielding a Z-score of -0.28, well within the acceptable threshold of 3.0. No fraud, waste, or abuse indicators were identified.",
+      "confidence": "HIGH"
+    }
+  },
+  {
+    "CLM_ID": "CLM017",
+    "truth": "PASS",
+    "predicted": "PASS",
+    "correct": true,
+    "verdict": {
+      "decision": "PASS",
+      "triggered_rules": [],
+      "rationale": "Claim CLM017 passed all coding rule checks with no PTP unbundling, MUE violations, mutually exclusive edits, or upcoding flags detected. The billed amount of $185.00 is only marginally above the reference mean of $175.00, producing a Z-score of 0.29, which is well below the outlier threshold of 3.0. No further review action is warranted based on current coding compliance and payment integrity standards.",
+      "confidence": "HIGH"
+    }
+  },
+  {
+    "CLM_ID": "CLM018",
+    "truth": "PASS",
+    "predicted": "PASS",
+    "correct": true,
+    "verdict": {
+      "decision": "PASS",
+      "triggered_rules": [],
+      "rationale": "Claim CLM018 passed all coding integrity checks with no PTP, MUE, or upcoding violations detected. The billed amount of $170.00 is within normal range, producing a Z-score of -0.14, well below the outlier threshold of 3.0. No further review or action is warranted for this claim.",
+      "confidence": "HIGH"
+    }
+  },
+  {
+    "CLM_ID": "CLM019",
+    "truth": "PASS",
+    "predicted": "PASS",
+    "correct": true,
+    "verdict": {
+      "decision": "PASS",
+      "triggered_rules": [],
+      "rationale": "Claim CLM019 passed all coding rule checks with no NCCI, MUE, or upcoding violations detected. The billed amount of $24.00 is within normal range, yielding a Z-score of 0.33, well below the outlier threshold of 3.0. The procedure code 80053 is clinically appropriate for the diagnosis of Type 2 Diabetes Mellitus (E11.9), and no fraud, waste, or abuse indicators were identified.",
+      "confidence": "HIGH"
+    }
+  },
+  {
+    "CLM_ID": "CLM020",
+    "truth": "PASS",
+    "predicted": "PASS",
+    "correct": true,
+    "verdict": {
+      "decision": "PASS",
+      "triggered_rules": [],
+      "rationale": "Claim CLM020 passed both the coding rules check and the payment amount check with no violations detected. The procedure code 80048 paired with diagnosis I10 is a clinically appropriate combination, and the payment of $16.00 falls well within the normal range with a Z-score of -0.4, far below the outlier threshold of 3.0. No fraud or abuse indicators were identified.",
+      "confidence": "HIGH"
+    }
+  },
+  {
+    "CLM_ID": "CLM021",
+    "truth": "PASS",
+    "predicted": "PASS",
+    "correct": true,
+    "verdict": {
+      "decision": "PASS",
+      "triggered_rules": [],
+      "rationale": "Claim CLM021 passed all automated audit checks with no coding-rule violations detected, including no PTP unbundling issues, MUE violations, or upcoding concerns. The billed amount of $9.00 for routine venipuncture (HCPCS 36415) is well within normal range, with a Z-score of 0.33 far below the outlier threshold of 3.0. No further review is warranted based on current audit criteria.",
+      "confidence": "HIGH"
+    }
+  },
+  {
+    "CLM_ID": "CLM022",
+    "truth": "PASS",
+    "predicted": "PASS",
+    "correct": true,
+    "verdict": {
+      "decision": "PASS",
+      "triggered_rules": [],
+      "rationale": "Claim CLM022 passed all coding rule checks with no NCCI violations, unbundling issues, or MUE cap breaches detected. The billed amount of $7.50 is statistically normal with a Z-score of -0.17, well within the acceptable threshold of 3.0. No indicators of fraud, waste, or abuse were identified for this routine venipuncture claim.",
+      "confidence": "HIGH"
+    }
+  },
+  {
+    "CLM_ID": "CLM023",
+    "truth": "PASS",
+    "predicted": "PASS",
+    "correct": true,
+    "verdict": {
+      "decision": "PASS",
+      "triggered_rules": [],
+      "rationale": "Claim CLM023 passed all fraud and anomaly checks. The procedure code 71046 is medically appropriate for the diagnosis of chest pain (R07.9), no coding rule violations were detected, and the payment amount of $48.00 has a Z-score of 0.25, well within the acceptable threshold of 3.0. No further investigation is warranted.",
+      "confidence": "HIGH"
+    }
+  },
+  {
+    "CLM_ID": "CLM024",
+    "truth": "PASS",
+    "predicted": "PASS",
+    "correct": true,
+    "verdict": {
+      "decision": "PASS",
+      "triggered_rules": [],
+      "rationale": "Claim CLM024 passed all coding rule checks with no PTP, MUE, mutual exclusivity, or upcoding violations detected. The billed amount of $38.00 is statistically typical for CPT 93000, with a Z-score of 0.30 well below the outlier threshold of 3.0. No fraud, waste, or abuse indicators were identified, and no further review is warranted.",
+      "confidence": "HIGH"
+    }
+  },
+  {
+    "CLM_ID": "CLM025",
+    "truth": "PASS",
+    "predicted": "FLAG",
+    "correct": false,
+    "verdict": {
+      "decision": "FLAG",
+      "triggered_rules": [
+        "Diagnosis-to-Procedure Mismatch: N95.1 (Menopausal and female climacteric states) is not a standard supported indication for HCPCS 58262 (Vaginal hysterectomy with removal of tube(s) and/or ovary(s))"
+      ],
+      "rationale": "While the coding rules check passed on technical grounds, the diagnosis code N95.1 (Menopausal and female climacteric states) is not a well-supported medical necessity indication for a vaginal hysterectomy with salpingo-oophorectomy (58262). Hysterectomy is typically indicated for conditions such as uterine fibroids, endometriosis, uterine prolapse, or malignancy, not menopausal symptoms alone. This diagnosis-procedure pairing warrants clinical review to confirm medical necessity documentation supports the surgical intervention.",
+      "confidence": "MEDIUM"
+    }
+  },
+  {
+    "CLM_ID": "CLM026",
+    "truth": "PASS",
+    "predicted": "PASS",
+    "correct": true,
+    "verdict": {
+      "decision": "PASS",
+      "triggered_rules": [],
+      "rationale": "Claim CLM026 passed both coding rules and payment outlier checks with no violations detected. The procedure code 59400 is correctly billed as a standalone global obstetric package, clinically consistent with the normal pregnancy diagnosis, and the billed amount of $3,300.00 is only 0.17 standard deviations above the reference mean of $3,200.00. The claim is demographically appropriate for a 28-year-old female patient.",
+      "confidence": "HIGH"
+    }
+  },
+  {
+    "CLM_ID": "CLM027",
+    "truth": "PASS",
+    "predicted": "PASS",
+    "correct": true,
+    "verdict": {
+      "decision": "PASS",
+      "triggered_rules": [],
+      "rationale": "Claim CLM027 passed all audit checks with no coding violations, unbundling issues, or payment anomalies detected. The procedure code 59025 is appropriate for the beneficiary's age, sex, and pregnancy diagnosis Z34.90. The billed amount of $115.00 is within normal range with a Z-score of -0.17, well below the outlier threshold of 3.0.",
+      "confidence": "HIGH"
+    }
+  },
+  {
+    "CLM_ID": "CLM028",
+    "truth": "PASS",
+    "predicted": "PASS",
+    "correct": true,
+    "verdict": {
+      "decision": "PASS",
+      "triggered_rules": [],
+      "rationale": "Claim CLM028 passed all automated audit checks with no coding violations, unbundling issues, or MUE cap breaches detected. The billed amount of $260.00 is statistically normal, with a Z-score of 0.17 well below the outlier threshold of 3.0. This claim is clean and can proceed through standard adjudication without further review.",
+      "confidence": "HIGH"
+    }
+  },
+  {
+    "CLM_ID": "CLM029",
+    "truth": "PASS",
+    "predicted": "PASS",
+    "correct": true,
+    "verdict": {
+      "decision": "PASS",
+      "triggered_rules": [],
+      "rationale": "Claim CLM029 passed all coding rule checks with no PTP unbundling, MUE violations, or upcoding concerns detected. The billed amount of $78.00 is within normal range with a Z-score of -0.35, well below the outlier threshold of 3.0. The diagnosis of low back pain (M54.5) is clinically consistent with a Level 3 established patient office visit (99213).",
+      "confidence": "HIGH"
+    }
+  },
+  {
+    "CLM_ID": "CLM030",
+    "truth": "PASS",
+    "predicted": "PASS",
+    "correct": true,
+    "verdict": {
+      "decision": "PASS",
+      "triggered_rules": [],
+      "rationale": "Claim CLM030 passed all coding rule checks with no PTP unbundling, MUE violations, or upcoding flags detected. The billed amount of $122.00 is well within normal range, producing a Z-score of -0.12 against a reference mean of $125.00, far below the outlier threshold of 3.0. No fraud, waste, or abuse indicators were identified across any audit dimension.",
+      "confidence": "HIGH"
+    }
+  }
+]

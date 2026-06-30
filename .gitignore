@@ -1,0 +1,17 @@
+.env
+__pycache__/
+*.pyc
+.DS_Store
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+
+# Internal planning / build files
+CLAUDE.md
+SOURCES_AND_IMPROVEMENTS.md
+build_report.py
+build_deck.py
+run_full_eval.py
+Intern_Assessment_Directions.pdf
