@@ -47,18 +47,20 @@ streamlit run app.py
 ## Project Structure
 
 ```
-├── app.py                    # Streamlit UI
-├── run.py                    # CLI entry point
+├── app.py                          # Streamlit UI
+├── run.py                          # CLI entry point
 ├── data/
-│   ├── claims.json           # 30 synthetic labeled claims
-│   └── coding_rules.json     # ~13 NCCI-style edits
+│   ├── claims.json                 # 30 synthetic labeled claims
+│   ├── coding_rules.json           # ~13 NCCI-style edits
+│   └── eval_results.json           # Full evaluation results
 ├── src/
-│   ├── generate_data.py      # Builds claims + rules
-│   ├── tools.py              # Agent tools (rule checker + outlier scorer)
-│   ├── agent.py              # LangGraph agent + reasoning node
-│   └── eval.py               # Evaluation script (precision/recall/F1)
-├── report.docx               # Written report
-└── deck.pptx                 # Slide deck
+│   ├── generate_data.py            # Builds claims + rules
+│   ├── tools.py                    # Agent tools (rule checker + outlier scorer)
+│   ├── agent.py                    # LangGraph agent + reasoning node
+│   └── eval.py                     # Evaluation script (precision/recall/F1)
+├── Final Report - Cotiviti.docx    # Written report
+├── deck.pptx                       # Slide deck
+└── CotivitiDemo.mp4                # Video demo
 ```
 
 ## Data & Methods
